@@ -4,10 +4,17 @@ import { BrowserRouter as Router } from 'react-router-dom'
 import './index.css';
 import App from './App';
 
-const rootElement = document.getElementById("root");
+// const rootElement = document.getElementById("root");
+// ReactDOM.render(
+//   <Router>
+//     <App />
+//   </Router>,
+//   rootElement
+// );
+
 ReactDOM.render(
-  <Router>
-    <App />
-  </Router>,
-  rootElement
-);
+    <Router>
+      <App />
+    </Router>, 
+    document.getElementById('root')
+  );
