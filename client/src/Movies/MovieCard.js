@@ -1,7 +1,39 @@
 import React from 'react';
+import { Link } from 'react-router-dom'
+
 
 const MovieCard = props => {
-  return;
+  console.log(props)
+  const { title, director, metascore, stars } = props.film;
+  return (
+    <Link to={`/movie/${props.film.id}`}>
+      <div className="save-wrapper">
+        <div className="movie-card">
+          <h2>{title}</h2>
+          <div className="movie-director">
+            Director: <em>{director}</em>
+          </div>
+          <div className="movie-metascore">
+            Metascore: <strong>{metascore}</strong>
+          </div>
+          <h3>Actors</h3>
+
+          {stars.map(star => (
+            <div key={star} className="movie-star">
+              {star}
+            </div>
+          ))}
+        </div> 
+          <button className="save-button"
+            onClick={(event) => {
+              event.preventDefault()
+              event.stopPropagation()
+              props.movieSave(props.film.id)
+            }
+          }>Save</button>
+      </div>
+    </Link>
+  );
 };
 
 export default MovieCard;

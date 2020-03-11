@@ -1,10 +1,10 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const CORS = require('cors');
+import express from 'express';
+import { json } from 'body-parser';
+import CORS from 'cors';
 
 const app = express();
 
-app.use(bodyParser.json());
+app.use(json());
 app.use(CORS());
 
 const movies = [
@@ -37,24 +37,7 @@ const movies = [
 		stars: ['Arnold Schwarzenegger', 'Edward Furlong', 'Linda Hamilton'],
 	},
 	{
-		id: 4,
-		title: 'Dumb and Dumber',
-		director: 'The Farely Brothers',
-		metascore: 76,
-		stars: ['Jim Carrey', 'Jeff Daniels', 'Lauren Holly'],
-	},
-	{
-		id: 5,
-		title: 'Tombstone',
-		director: 'George P. Cosmatos',
-		metascore: 89,
-		stars: ['Kurt Russell', 'Bill Paxton', 'Sam Elliot'],
-	},
-];
-
-app.get('/api/movies', (req, res) => {
-	res.send(movies);
-});
+		id:
 
 app.get('/api/movies/:id', (req, res) => {
 	const movie = movies.filter(movie => movie.id.toString() === req.params.id)[0];
